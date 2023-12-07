@@ -14,7 +14,7 @@ def about (request):
     return render(request, 'main/about.html')
 
 def contact(request):
-    if request.POST.method == "POST":
+    if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         message = request.POST.get('message')
@@ -28,7 +28,7 @@ def travels(request):
     return render(request, 'main/travels.html')
 
 def signin(request):
-    if request.METHOD == "POST":
+    if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         

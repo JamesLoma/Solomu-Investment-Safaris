@@ -1,1 +1,293 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/home/styles.css" />
+    <link rel="shortcut icon" href="/static/assets/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/home/mobile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Tourism | Safaris</title>
+</head>
+
+<body>
+
+    {% if success %}
+
+    <script>
+        alert("{{success}}");
+        window.location="/"
+    </script>
+  
+  {% endif %}
+  
+  {% if sign %}
+  
+          <script>
+              alert("{{sign}}");
+              window.location="/"
+          </script>
+  
+      {% endif %}
+
+      <div class="chatbot-Div">
+        <button class="chatbot-toggler">
+            <span class="material-symbols-rounded"><i class="fa-solid fa-message" style="color: #fff; font-size: 24px;"></i></span>
+            <span class="material-symbols-outlined"><i class="fa-solid fa-message" style="color: #fff; font-size: 24px;"></i></span>
+          </button>
+          <div class="chatbot">
+            <header>
+              <h2>Assistant</h2>
+              <span class="close-btn material-symbols-outlined">close</span>
+            </header>
+            <ul class="chatbox">
+              <li class="chat incoming">
+                <span class="material-symbols-outlined">Assistant</span>
+                <p>Hi there 👋<br>How can I help you today?</p>
+              </li>
+            </ul>
+            <div class="chat-input">
+              <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+              <span id="send-btn" class="material-symbols-rounded">send</span>
+            </div>
+          </div>
+        </div>
+
+        <!--===========Nav Bar=================-->
+        <section class="nav-bar">
+            <div class="logo"><a href="/">Tourism</a></div>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/travels">travels</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">logout</a></li>
+                {% else %}
+                <li><a href="/signin">Sign In</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                {% endif %}
+            </ul>
+            <div class="mobile">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            </div>
+
+        </section>
+        <!--===============Banner================-->
+        <section class="banner">
+            <div class="banner-text-item">
+                <div class="banner-heading" style="margin-bottom: 1rem;">
+                    <h1>Explore the World with Us</h1>
+                    <p>Discover Amazing Destinations and Create Unforgettable Memories</p>
+                    <span id="element" style="color: #10d31d; font-size: 48px; margin-bottom: 1.5rem;font-family: 'Roboto', sans-serif; margin-bottom: 1rem;"></span>
+                </div>
+                <form class="form">
+                    {% comment %} <input type="text" list="mylist" placeholder="Where would you like to go?">
+                    <datalist id="mylist">
+                        <option></option>
+                        <option>Ngorongoro National Park</option>
+                        <option>Serengeti National Park</option>
+                        <option>Lake manyara National Park</option>
+                        <option>Mout Kilimanjaro</option>
+                        <option>Arusha National Park</option>
+                        <option>Tarangire National Park</option>
+                    </datalist>
+                    <input type="date" class="date"> {% endcomment %}
+                    <a href="/travels" class="book">book your adventure in Tanzania</a>
+                </form>
+            </div>
+        </section>
+
+        <!--=========Services===============-->
+        <section class="services">
+            <div class="service-item">
+                <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293634/tour-guide_onzla9.png">
+                <h2>800+ Our Local Guides</h2>
+            </div>
+            <div class="service-item">
+                <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293738/reliability_jbpn4g.png">
+                <h2>100% Trusted Tour Agency</h2>
+            </div>
+            <div class="service-item">
+                <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293635/experience_a3fduk.png">
+                <h2>3+ Years of Travel Experience</h2>
+            </div>
+            <div class="service-item">
+                <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293634/feedback_s8z7d9.png">
+                <h2>96% Our Travelers are Happy</h2>
+            </div>
+        </section>
+        <!--==============Places===================-->
+        <section class="places">
+            <div class="places-text">
+                <small>FEATURED TOURS PACKAGES</small>
+                <h2>Favourite Places</h2>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <img src="/static/assets/mysorepalace.avif">
+                        </div>
+                    </div>
+
+                    <div class="text">
+                        <!-- <span class="rating">⭐⭐⭐⭐⭐</span> -->
+                        <h2>Mout Kilimanjaro</h2>
+                        <div class="card-box" style="cursor:pointer;">
+                            <p class="location">✈ Kilimanjaro Region</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <img src="/static/assets/taj.avif">
+                        </div>
+                    </div>
+
+                    <div class="text">
+                        <!-- <span class="rating">⭐⭐⭐⭐⭐</span> -->
+                        <h2>Serengeti National Park</h2>
+                        <!--<p class="cost">र5000 / Per Person</p>-->
+                        <div class="card-box" style="cursor:pointer;">
+                            <!--<p class="time">🕓 3 Days</p>-->
+                            <p class="location">✈ Arusha and Mara Regions</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <img src="/static/assets/redfort.avif">
+                        </div>
+                    </div>
+
+                    <div class="text">
+                        <!-- <span class="rating">⭐⭐⭐⭐⭐</span> -->
+                        <h2>Ngorongoro National Park</h2>
+                        <div class="card-box" style="cursor:pointer;">
+                            <p class="location">✈ Arusha Region</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <img src="/static/assets/goldenpalace.avif">
+                        </div>
+                    </div>
+
+                    <div class="text">
+                        <!-- <span class="rating">⭐⭐⭐⭐⭐</span> -->
+                        <h2>Lake manyara National Park</h2>
+                        <div class="card-box" style="cursor:pointer;">
+                            <p class="location">✈ Arusha and Manyara Regions</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <img src="/static/assets/gatewayofindia.avif">
+                        </div>
+                    </div>
+
+                    <div class="text">
+                        <!-- <span class="rating">⭐⭐⭐⭐⭐</span> -->
+                        <h2>Arusha National Park</h2>
+                        <div class="card-box" style="cursor:pointer;">
+                            <p class="location">✈ Arusha Region</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="zoom-img">
+                        <div class="img-card">
+                            <img src="/static/assets/hampi.avif">
+                        </div>
+                    </div>
+
+                    <div class="text">
+                        <!-- <span class="rating">⭐⭐⭐⭐⭐</span> -->
+                        <h2>Tarangire National Park</h2>
+                        <div class="card-box" style="cursor:pointer;">  
+                            <p class="location">✈ Manyara Region</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--===========About Us===============-->
+        <section class="about">
+            <div class="about-img">
+                <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293719/outdoor_tjjhxk.jpg">
+            </div>
+            
+                <div class="about-text" >
+                    <small>YOUR TANZANIA ADVENTURE AWAITS!</small>
+                    <h2>Explore the Beauty of Tanzania</h2>
+                    <p>Discover Tanzania's magic with us! Whether it's a thrilling safari, idyllic beach retreat, or conquering Kilimanjaro, your dream vacation starts here.</p>
+                    <p>Choose from our curated itineraries or customize your trip. With our own office in Arusha, our dedicated team ensures a seamless journey. Join our delighted travelers on TripAdvisor—book now for an unforgettable Tanzanian experience. See you in Tanzania!</p>
+                <a href="/blog">READ MORE</a>
+            </div>
+        </section>
+
+        <!--===========Footer=================-->
+        <div class="footer">
+            <div class="links">
+                <h3>EXPLORE</h3>
+                <ul>
+                    <li>Discover Exclusive Travel Deals</li>
+                    <li>Unlock Savings with Coupons</li>
+                    <li>Contact Our Friendly Team</li>
+                    <li>Learn About Our Story</li>
+                    <li>Join Our Community</li>
+                </ul>
+            </div>
+            <div class="links">
+                <h3>DESTINATIONS</h3>
+                <ul>
+                    <li>Embark on Thrilling Safaris</li>
+                    <li>Relax in Tropical Zanzibar</li>
+                    <li>Create Memorable Family Adventures</li>
+                    <li>Conquer the Summit of Kilimanjaro</li>
+                    <li>Explore Hidden Gems</li>
+                </ul>
+            </div>
+            <div class="links">
+                <h3>SUPPORT</h3>
+                <ul>
+                    <li>Find Answers in FAQs</li>
+                    <li>Contact Support for Assistance</li>
+                    <li>Understand Our Terms & Conditions</li>
+                    <li>Protect Your Privacy with Our Policy</li>
+                    <li>Report Issues Promptly</li>
+                </ul>
+            </div>
+            <!--<div class="copyright">
+                <p>&copy; 2023 Your Travel Adventure. All rights reserved.</p>
+            </div>-->
+        </div>
+
+
+        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+        <script src="/static/js/chatbot/chatbot.js"></script>
+        <script>
+            var typed = new Typed('#element', {
+                strings: ['Family Vacation', 'Solo Adventure' , 'Spiritual and Wellness Travel' , 'Road Trips' , 'Romantic Getaway'],
+                typeSpeed: 50,
+            });
+        </script>
+    </body>
+</html>
+
