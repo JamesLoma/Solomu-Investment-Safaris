@@ -29,4 +29,56 @@ def travels(request):
 
 def signin(request):
     if request.METHOD == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         
+        #check if the user entered correct credentials
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return render(request, 'main/index.html', {"success": "Logged in Successfully"})
+        
+        else:
+            return render (request, 'auth/signin.html', {"message": "Enter the correct credentials"})
+    
+    return render(request, 'auth/signin.html')
+
+def signup(request):
+    if request.method == 'POST':
+        fname = request.POST.get("firstname") 
+        last = request.POST.get("lastname")
+        un = request.POST.get("uname")
+        pwd = request.POST.get("password")
+        em = request.POST.get("email")
+        con = request.POST.get("contact_number")
+
+        usr = User.objects.create_user(un , em, pwd)
+        usr.first_name = fname
+        usr.last_name = last
+        usr.save()
+
+        reg = register_table(user=usr , contact_number=con)
+        reg.save()
+
+        return redirect('/signin' , {"status" : "{} Your Account is Created Successfully ".format(fname)}) 
+        
+
+    return render(request , 'authentication/signup.html')
+
+def logout(request):
+    django_logout(request)
+    return redirect("/signin" , {"logsign" : " Logged Out Successfully"})
+
+def profile(request):
+    if request.user.is_authenticated:
+        return render(request , 'main/profile.html')
+    else:
+        return redirect('/signin')
+
+def error_404(request , exception):
+    return render(request , 'main/404.html')
+
+def blog(request):
+    return render(request,'main/blog.html')
+
